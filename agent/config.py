@@ -21,7 +21,7 @@ TOP_N = int(os.environ.get("GRAVY_TOP_N", "5"))
 # Источник возможностей: GitHub search query (read-only)
 WATCH_QUERY = os.environ.get(
     "GRAVY_WATCH_QUERY",
-    'bounty label:"$" state:open sort:updated',
+    'bounty state:open sort:updated',
 )
 
 STATE_DIR = os.environ.get("GRAVY_STATE_DIR", "state")
