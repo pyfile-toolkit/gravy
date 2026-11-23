@@ -5,8 +5,8 @@ import time
 
 from . import config, gateway, ledger
 
-# gpt-4o-mini fallback rates, USD per 1M tokens (если провайдер не вернул usage.cost)
-FALLBACK_RATES = {"input": 0.15, "output": 0.60}
+# Groq free tier — стоимость 0; если провайдер вернёт usage.cost, он имеет приоритет
+FALLBACK_RATES = {"input": 0.0, "output": 0.0}
 
 
 def _estimate_cost(resp):

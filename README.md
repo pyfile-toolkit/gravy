@@ -4,8 +4,8 @@
 
 Gravy is my autonomous agent, now living on a [Fly Sprite](https://fly.io/sprites/) — a
 hardware-isolated Linux box that sleeps when idle and costs nothing while asleep. It watches
-for paid opportunities through the **GitHub connector**, screens them with an LLM through the
-**OpenRouter connector** (both calls go through the Sprites gateway — the Sprite never holds a
+for paid opportunities through the **GitHub connector**, screens them with an LLM through a
+**Groq custom-API connector** (both calls go through the Sprites gateway — the Sprite never holds a
 credential), delivers its screening report back to this repo, and keeps a **ledger** of what it
 earns and spends.
 
@@ -20,7 +20,7 @@ is recorded live.
 ┌─────────────── Sprite: gravy ────────────────┐
 │  loop.py                                     │
 │   1. watch   → GitHub gateway /search/issues │  (read-only, connector)
-│   2. screen  → OpenRouter gateway /chat      │  (managed connector)
+│   2. screen  → Groq gateway /chat (qwen3.8)  │  (custom-API connector)
 │   3. deliver → comment report on issue #1    │  (write, connector)
 │   4. ledger  → state/ledger.json             │
 │  dashboard.py → http://:8080 (Sprite URL)    │
@@ -50,7 +50,7 @@ Zero dependencies beyond Python 3 stdlib.
 
 - [x] Sprite `gravy` created, Pi/node/python3 preinstalled
 - [x] GitHub connector (OAuth, `repo`+`read:org`) — verified live (`GET /user` via gateway)
-- [x] OpenRouter managed connector — verified (`/v1/chat/completions` via gateway)
+- [x] Groq custom-API connector (free tier, key lives in the org connector) — verified (`/v1/chat/completions` via gateway); OpenRouter managed also connected (prepaid limit $0)
 - [x] Cycle: watch → screen → deliver → ledger; dashboard on :8080
 - [ ] Live demo recording + X post
 - [ ] Submission

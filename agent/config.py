@@ -8,13 +8,15 @@ GITHUB_GATEWAY = os.environ.get(
     "GITHUB_GATEWAY",
     "https://api.sprites.dev/v1/gateway/github/pzMtbJZnsfV6z5uhuV-MFQ",
 )
-OPENROUTER_GATEWAY = os.environ.get(
-    "OPENROUTER_GATEWAY",
-    "https://api.sprites.dev/v1/gateway/openrouter/-45-yWPGQvqs8b0AhwYibQ",
+# LLM: Groq free tier через Custom API connector (ключ хранится в коннекторе org,
+# не в Sprite). OpenRouter managed подключён тоже, но prepaid limit $0.
+LLM_GATEWAY = os.environ.get(
+    "LLM_GATEWAY",
+    "https://api.sprites.dev/v1/gateway/custom_api/orYq2zt0pwpnz7IAAVE9nw",
 )
 
 # Скрининг возможностей: модель и порог пригодности
-MODEL = os.environ.get("GRAVY_MODEL", "openai/gpt-4o-mini")
+MODEL = os.environ.get("GRAVY_MODEL", "qwen/qwen3.8-27b")
 FIT_THRESHOLD = float(os.environ.get("GRAVY_FIT_THRESHOLD", "7.0"))
 TOP_N = int(os.environ.get("GRAVY_TOP_N", "5"))
 

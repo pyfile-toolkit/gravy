@@ -55,7 +55,7 @@ def gh_comment(owner_repo, issue_number, body):
 
 def chat(messages, model=None, max_tokens=500):
     return _call(
-        config.OPENROUTER_GATEWAY,
+        config.LLM_GATEWAY,
         "/v1/chat/completions",
         {"model": model or config.MODEL, "messages": messages, "max_tokens": max_tokens},
         timeout=60,
