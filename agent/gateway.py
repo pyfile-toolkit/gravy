@@ -17,7 +17,10 @@ def _call(base, path, payload=None, method=None, timeout=30):
         url,
         data=data,
         method=method or ("POST" if data else "GET"),
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": "gravy-agent/1.0 (+https://github.com/pyfile-toolkit/gravy)",
+        },
     )
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
